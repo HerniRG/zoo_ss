@@ -22,7 +22,7 @@ Este programa simula la venta de entradas en el Zoo IS101, calculando precios ba
 
 ## Uso
 
-Para usar este programa, clona el repositorio https://github.com/HerniRG/zoo_ss.git y ejecútalo en tu entorno de Python preferido en el archivo `zoo_separ.py`. Sigue las instrucciones en pantalla para ingresar las edades de los visitantes y obtener el ticket.
+Para usar este programa, clona el repositorio https://github.com/HerniRG/zoo_ss.git y ejecútalo en tu entorno de Python preferido en el archivo `main.py`. Sigue las instrucciones en pantalla para ingresar las edades de los visitantes y obtener el ticket.
 
 ## Créditos
 
