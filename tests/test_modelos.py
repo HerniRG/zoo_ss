@@ -1,3 +1,4 @@
+import pytest
 from app.modelos import Entrada, TipoEntrada, Grupo_Entrada  
 
 def test_crear_entrada():
@@ -16,11 +17,6 @@ def test_crear_entrada():
     entrada = Entrada(70)
     assert entrada.tipo == TipoEntrada.JUBILADO
     assert entrada.precio == 18
-
-def test_crear_entrada_edad_negativa():
-    entrada = Entrada(-2)
-    assert entrada.tipo == TipoEntrada.NO_VALIDO
-    assert entrada.precio == 0
 
 def test_crear_grupo_entradas():
     grupo = Grupo_Entrada()
@@ -45,8 +41,13 @@ def test_anadir_entradas_a_grupo():
     assert grupo.num_entradas == 4
     assert grupo.total == 55
 
-    grupo.add_entrada(-9)
-    assert grupo.num_entradas == 4
-    assert grupo.total == 55
+def test_provocar_errores():
+    grupo = Grupo_Entrada()
 
+    with pytest.raises(ValueError) as excinfo:
+        grupo.add_entrada(-9)
+    assert str(excinfo.value) == "Solo edades mayores o iguales a 0."
 
+    with pytest.raises(TypeError) as excinfo:
+        grupo.add_entrada("hola")
+    assert str(excinfo.value) == "La edad debe ser un número entero."
