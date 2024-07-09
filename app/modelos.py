@@ -44,7 +44,7 @@ class Grupo_Entrada():
         
     
     def cantidad_entradas_por_tipo(self, tipo: TipoEntrada):
-        pass
+        return self.tipos_entrada[tipo]
 
 
 
