@@ -44,12 +44,22 @@ def test_anadir_entradas_a_grupo():
 def test_provocar_errores():
     grupo = Grupo_Entrada()
 
-    with pytest.raises(ValueError) as excinfo:
+    with pytest.raises(ValueError):
         grupo.add_entrada(-9)
-    assert str(excinfo.value) == "Solo edades mayores o iguales a 0."
 
     with pytest.raises(TypeError) as excinfo:
         grupo.add_entrada("hola")
     assert str(excinfo.value) == "La edad debe ser un número entero."
 
+    
+    with pytest.raises(ValueError) as excinfo:
+        Entrada(-2)
+    assert str(excinfo.value) == "Solo edades mayores o iguales a 0."
 
+    with pytest.raises(TypeError):
+        Entrada("hola")
+
+def test_cantidad_entradas_por_tipo():
+    grupo = Grupo_Entrada()
+    grupo.add_entrada(10)
+    assert grupo.cantidad_entradas_por_tipo(TipoEntrada.NIÑO) == 1
