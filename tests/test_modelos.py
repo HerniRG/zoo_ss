@@ -61,5 +61,24 @@ def test_provocar_errores():
 
 def test_cantidad_entradas_por_tipo():
     grupo = Grupo_Entrada()
+    
     grupo.add_entrada(10)
     assert grupo.cantidad_entradas_por_tipo(TipoEntrada.NIÑO) == 1
+
+    grupo.add_entrada(36)
+    assert grupo.cantidad_entradas_por_tipo(TipoEntrada.ADULTO) == 1
+
+    grupo.add_entrada(9)
+    assert grupo.cantidad_entradas_por_tipo(TipoEntrada.NIÑO) == 2
+
+    grupo.add_entrada(99)
+    assert grupo.cantidad_entradas_por_tipo(TipoEntrada.JUBILADO) == 1
+
+    grupo.add_entrada(1)
+    assert grupo.cantidad_entradas_por_tipo(TipoEntrada.BEBE) == 1
+
+def test_subtotal_por_tipo():
+    grupo = Grupo_Entrada()
+
+    grupo.add_entrada(10)
+    assert grupo.subtotal_tipo(TipoEntrada.NIÑO) == 14

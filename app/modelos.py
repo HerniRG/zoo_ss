@@ -27,7 +27,7 @@ class Entrada():
             if edad < limite_edad:
                 self.tipo = tipos[indice] # TipoEntrada.BEBE, TipoEntrada.NIÑO, TipoEntrada.ADULTO, TipoEntrada.JUBILADO
                 self.precio = tipos[indice].value # 0, 14, 23, 18
-                break             
+                break            
 
 class Grupo_Entrada():
     def __init__(self):
@@ -43,12 +43,9 @@ class Grupo_Entrada():
         self.tipos_entrada[entrada.tipo] += 1
         
     
-    def cantidad_entradas_por_tipo(self, tipo: TipoEntrada):
+    def cantidad_entradas_por_tipo(self, tipo: TipoEntrada) -> int:
         return self.tipos_entrada[tipo]
-
-
-
-
-
-
     
+    def subtotal_tipo(self, tipo: TipoEntrada):
+        subtotal = self.cantidad_entradas_por_tipo(tipo) * tipo.value
+        return subtotal
