@@ -1,19 +1,22 @@
 from enum import Enum, auto
 
+"""De esta manera se pueden cambiar las edades, tipos de entrada y los precios 
+de las entradas en el comienzo del coódigo sin cambiar nada por medio"""
+
+
+
 class TipoEntrada(Enum):
+    """
+    Enum TipoEntrada. En este caso los values son los precios de entrada de cada tipo.
+    """
     BEBE = 0
     NIÑO = 14
     ADULTO = 23
     JUBILADO = 18
 
-    # BEBE = {"EDAD": 3, "PRECIO": 0, "CONTADOR": 0}
-    # NIÑO = {"EDAD": 13, "PRECIO": 14, "CONTADOR": 0}
-    # ADULTO = {"EDAD": 65, "PRECIO": 23, "CONTADOR": 0}
-    # JUBILADO = {"EDAD": float('inf'), "PRECIO": 18, "CONTADOR": 0}
-
-
-
 class Entrada():
+    edades = [3, 13, 65, float('inf')] # Los limites de las edades en lista para iterar posteriormente
+
     def __init__(self, edad: int):
 
         if not isinstance(edad, int):
@@ -22,19 +25,16 @@ class Entrada():
             raise ValueError("Solo edades mayores o iguales a 0.")
        
         self.edad = edad
-        
-        if edad < 3:
-            self.tipo = TipoEntrada.BEBE
-            self.precio = TipoEntrada.BEBE.value
-        elif edad < 13:
-            self.tipo = TipoEntrada.NIÑO
-            self.precio = TipoEntrada.NIÑO.value
-        elif edad < 65:
-            self.tipo = TipoEntrada.ADULTO
-            self.precio = TipoEntrada.ADULTO.value
-        else: 
-            self.tipo = TipoEntrada.JUBILADO
-            self.precio = TipoEntrada.JUBILADO.value
+        self.calculo_tipo_y_precio(edad)
+
+    def calculo_tipo_y_precio(self, edad):
+        tipos = list(TipoEntrada) # [<TipoEntrada.BEBE: 0>, <TipoEntrada.NIÑO: 14>, <TipoEntrada.ADULTO: 23>, <TipoEntrada.JUBILADO: 18>]
+        for indice, limite_edad in enumerate(self.edades):
+            print(tipos[indice].value)
+            if edad < limite_edad:
+                self.tipo = tipos[indice] # TipoEntrada.BEBE, TipoEntrada.NIÑO, TipoEntrada.ADULTO, TipoEntrada.JUBILADO
+                self.precio = tipos[indice].value # 0, 14, 23, 18
+                break       
 
 class Grupo_Entrada():
     def __init__(self):

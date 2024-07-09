@@ -51,3 +51,5 @@ def test_provocar_errores():
     with pytest.raises(TypeError) as excinfo:
         grupo.add_entrada("hola")
     assert str(excinfo.value) == "La edad debe ser un número entero."
+
+
