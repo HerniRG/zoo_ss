@@ -82,3 +82,6 @@ def test_subtotal_por_tipo():
 
     grupo.add_entrada(10)
     assert grupo.subtotal_tipo(TipoEntrada.NIÑO) == 14
+
+    grupo.add_entrada(11)
+    assert grupo.subtotal_tipo(TipoEntrada.NIÑO) == 28

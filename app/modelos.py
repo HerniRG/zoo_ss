@@ -15,7 +15,7 @@ class TipoEntrada(Enum):
 class Entrada():
     edades = [3, 13, 65, float('inf')] # Los limites de las edades en lista para iterar posteriormente
 
-    def __init__(self, edad: int):
+    def __init__(self, edad):
         if not isinstance(edad, int):
             raise TypeError("La edad debe ser un número entero.")
         elif edad < 0:
