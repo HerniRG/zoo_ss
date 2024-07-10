@@ -44,8 +44,9 @@ class Grupo_Entrada():
         
     
     def cantidad_entradas_por_tipo(self, tipo: TipoEntrada) -> int:
-        return self.tipos_entrada[tipo]
+        return self.tipos_entrada[tipo] # devuelve el valor del diccionario con la clave tipo que le pasamos de argumento
     
     def subtotal_tipo(self, tipo: TipoEntrada):
         subtotal = self.cantidad_entradas_por_tipo(tipo) * tipo.value
         return subtotal
+    
