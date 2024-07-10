@@ -42,12 +42,15 @@ if __name__ == "__main__":
         
         grupo = Grupo_Entrada()
         grupo.add_entrada(2)
+        grupo.add_entrada(25)
         vg = VistaGrupo(grupo)
         vg.paint()
         
         grupo2 = Grupo_Entrada()
-        grupo.add_entrada(25)
-        vg2 = VistaGrupo(grupo, 42)
+        grupo2.add_entrada(66)
+        grupo2.add_entrada(98)
+        grupo2.add_entrada(7)
+        vg2 = VistaGrupo(grupo2, 42)
         vg2.paint()
 
         Input()
