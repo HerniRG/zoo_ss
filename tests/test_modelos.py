@@ -71,7 +71,7 @@ def test_cantidad_entradas_por_tipo():
     grupo.add_entrada(9)
     assert grupo.cantidad_entradas_por_tipo(TipoEntrada.NIÑO) == 2
 
-    grupo.add_entrada(99)
+    grupo.add_entrada(89)
     assert grupo.cantidad_entradas_por_tipo(TipoEntrada.JUBILADO) == 1
 
     grupo.add_entrada(1)
