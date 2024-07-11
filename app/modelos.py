@@ -1,6 +1,9 @@
 from enum import Enum, auto
 
 class TipoEntrada(Enum):
+    """
+    primer valor de la tupla es el precio y el segundo la edad
+    """
     BEBE = (0, 3)
     NIÑO = (14, 13)
     ADULTO = (23, 65)
