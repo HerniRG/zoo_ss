@@ -14,8 +14,8 @@
 11    CONF
 """
 from simple_screen import Screen_manager, locate, Input
-from modelos import Grupo_Entrada, TipoEntrada
 from collections import namedtuple
+from app.modelos import Grupo_Entrada, TipoEntrada
 
 
 class VistaGrupo():
@@ -56,10 +56,11 @@ class VistaEntrada():
         self.etiqueta = etiqueta
         self.x = x
         self.y = y
+        self.value = ""
 
     def paint(self):
         locate(self.x, self.y, self.etiqueta)
-        value = Input()
+        self.value = Input()
 
 if __name__ == "__main__":
     with Screen_manager:
@@ -80,5 +81,5 @@ if __name__ == "__main__":
 
         vEdad = VistaEntrada("Edad: ", 1, 12)
         vEdad.paint()
-        
+
         Input("Pulsa Enter para terminar.")
