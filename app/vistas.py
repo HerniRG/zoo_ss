@@ -13,8 +13,8 @@
 10    EDAD: 
 11    CONF
 """
+from simple_screen import Screen_manager, locate, Input
 from modelos import Grupo_Entrada, TipoEntrada
-from simple_screen import locate, Print, cls, Screen_manager, Input
 
 
 class VistaGrupo():
@@ -36,10 +36,10 @@ class VistaGrupo():
         # Cuerpo tabla
         for tipo in TipoEntrada:
             nombre_tipo = f"{tipo.name: <14}"  # Asegura que el nombre del tipo tenga 14 caracteres
-            precio = f"{tipo.value['Precio']:5.2f}"
+            precio = f"{tipo.value[0]:5.2f}"  # Accede al primer elemento de la tupla para el precio
             cantidad = f"{self.grupo.cantidad_entradas_por_tipo(tipo):2}"
             subtotal = f"{self.grupo.subtotal_tipo(tipo):7.2f}"
-            locate(self.x, (linea_pintada), f"{nombre_tipo}{precio}    {cantidad}     {subtotal}")
+            locate(self.x, linea_pintada, f"{nombre_tipo}{precio}    {cantidad}     {subtotal}")
             linea_pintada += 1
         locate(self.x, linea_pintada, "-------------------------------------")
         linea_pintada += 1
@@ -68,4 +68,3 @@ if __name__ == "__main__":
         vg2.paint()
 
         Input()
-
