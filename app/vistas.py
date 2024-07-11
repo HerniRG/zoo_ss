@@ -15,6 +15,7 @@
 """
 from simple_screen import Screen_manager, locate, Input
 from modelos import Grupo_Entrada, TipoEntrada
+from collections import namedtuple
 
 
 class VistaGrupo():
@@ -36,7 +37,7 @@ class VistaGrupo():
         # Cuerpo tabla
         for tipo in TipoEntrada:
             nombre_tipo = f"{tipo.name: <14}"  # Asegura que el nombre del tipo tenga 14 caracteres
-            precio = f"{tipo.value[0]:5.2f}"  # Accede al primer elemento de la tupla para el precio
+            precio = f"{tipo.value.precio:5.2f}"  # Accede al primer elemento de la tupla para el precio
             cantidad = f"{self.grupo.cantidad_entradas_por_tipo(tipo):2}"
             subtotal = f"{self.grupo.subtotal_tipo(tipo):7.2f}"
             locate(self.x, linea_pintada, f"{nombre_tipo}{precio}    {cantidad}     {subtotal}")

@@ -1,14 +1,17 @@
 from enum import Enum, auto
+from collections import namedtuple
+
+Datos_Entrada = namedtuple("Datos_Entrada", ("precio", "edad"))
 
 class TipoEntrada(Enum):
     """
     primer valor de la tupla es el precio y el segundo la edad
     """
-    BEBE = (0, 3)
-    NIÑO = (14, 13)
-    ADULTO = (23, 65)
-    JUBILADO = (18, 99)
-    INMORTAL = (0, float('inf'))
+    BEBE = Datos_Entrada(0, 3)
+    NIÑO = Datos_Entrada(14, 13)
+    ADULTO = Datos_Entrada(23, 65)
+    JUBILADO = Datos_Entrada(18, 99)
+    INMORTAL = Datos_Entrada(0, float('inf'))
 
 class Entrada():
     def __init__(self, edad):
@@ -20,9 +23,9 @@ class Entrada():
         self.edad = edad
         
         for tipo in TipoEntrada:
-            if edad < tipo.value[1]:  # Accediendo al segundo elemento de la tupla para la edad
+            if edad < tipo.value.edad:  # Accediendo al segundo elemento de la tupla para la edad
                 self.tipo = tipo
-                self.precio = tipo.value[0]  # Accediendo al primer elemento de la tupla para el precio
+                self.precio = tipo.value.precio  # Accediendo al primer elemento de la tupla para el precio
                 break
 
 class Grupo_Entrada():
@@ -46,7 +49,7 @@ class Grupo_Entrada():
         return self.tipos_entrada[tipo]
     
     def subtotal_tipo(self, tipo: TipoEntrada) -> int:
-        subtotal = self.cantidad_entradas_por_tipo(tipo) * tipo.value[0]
+        subtotal = self.cantidad_entradas_por_tipo(tipo) * tipo.value.precio
         return subtotal
     
 
