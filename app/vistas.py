@@ -36,7 +36,7 @@ class VistaGrupo():
 
         # Cuerpo tabla
         for tipo in TipoEntrada:
-            nombre_tipo = f"{tipo.name: <14}"  # Asegura que el nombre del tipo tenga 14 caracteres
+            nombre_tipo = f"{tipo.name: <14}"  # el nombre del tipo tendrá 14 caracteres
             precio = f"{tipo.value.precio:5.2f}"  # Accede al primer elemento de la tupla para el precio
             cantidad = f"{self.grupo.cantidad_entradas_por_tipo(tipo):2}"
             subtotal = f"{self.grupo.subtotal_tipo(tipo):7.2f}"
@@ -50,7 +50,17 @@ class VistaGrupo():
         total_precio = f"{self.grupo.total:8.2f}"
         locate(self.x, linea_pintada, f"                      {total_entradas}    {total_precio}")
         
-        
+
+class VistaEntrada():
+    def __init__(self, etiqueta: str, x, y) -> None:
+        self.etiqueta = etiqueta
+        self.x = x
+        self.y = y
+
+    def paint(self):
+        locate(self.x, self.y, self.etiqueta)
+        value = Input()
+
 if __name__ == "__main__":
     with Screen_manager:
         
@@ -68,4 +78,7 @@ if __name__ == "__main__":
         vg2 = VistaGrupo(grupo2, 42)
         vg2.paint()
 
-        Input()
+        vEdad = VistaEntrada("Edad: ", 1, 12)
+        vEdad.paint()
+        
+        Input("Pulsa Enter para terminar.")
