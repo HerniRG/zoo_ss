@@ -32,11 +32,11 @@ class Grupo_Entrada():
     def __init__(self):
         self.total = 0
         self.num_entradas = 0
-        self.tipos_entrada = {tipo: 0 for tipo in TipoEntrada} # Asignar valor inicial 0 a cada tipo de entrada completo (<TipoEntrada.BEBE: {'Precio': 0, 'Edad': 3}>: 0)
         
-        # self.tipos_entrada = {}          dictionary comprehension: es lo mismo que la linea de arriba :)
-        # for tipo in TipoEntrada:
-        #     self.tipos_entrada[tipo] = 0  
+        # Asignar valor inicial 0 a cada tipo de entrada completo (<TipoEntrada.BEBE: {'Precio': 0, 'Edad': 3}>: 0)
+        self.tipos_entrada = {}          
+        for tipo in TipoEntrada:
+            self.tipos_entrada[tipo] = 0  
 
     def add_entrada(self, edad):
         entrada = Entrada(edad)
