@@ -61,25 +61,3 @@ class VistaEntrada():
     def paint(self):
         locate(self.x, self.y, self.etiqueta)
         self.value = Input()
-
-if __name__ == "__main__":
-    with Screen_manager:
-        
-        grupo = Grupo_Entrada()
-        grupo.add_entrada(2)
-        grupo.add_entrada(25)
-        vg = VistaGrupo(grupo)
-        vg.paint()
-        
-        grupo2 = Grupo_Entrada()
-        grupo2.add_entrada(66)
-        grupo2.add_entrada(98)
-        grupo2.add_entrada(7)
-        grupo2.add_entrada(190)
-        vg2 = VistaGrupo(grupo2, 42)
-        vg2.paint()
-
-        vEdad = VistaEntrada("Edad: ", 1, 12)
-        vEdad.paint()
-
-        Input("Pulsa Enter para terminar.")

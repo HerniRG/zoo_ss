@@ -14,10 +14,13 @@ class TipoEntrada(Enum):
     INMORTAL = Datos_Entrada(0, float('inf'))
 
 class Entrada():
-    def __init__(self, edad):
-        if not isinstance(edad, int):
-            raise TypeError("La edad debe ser un número entero.")
-        elif edad < 0:
+    def __init__(self, edad_str):
+        try:
+            edad = int(edad_str)  # Intenta convertir el string a entero
+        except ValueError:
+            raise ValueError("La edad debe ser un número entero.")
+        
+        if edad < 0:
             raise ValueError("Solo edades mayores o iguales a 0.")
        
         self.edad = edad
