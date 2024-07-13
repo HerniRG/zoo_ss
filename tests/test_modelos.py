@@ -47,7 +47,7 @@ def test_provocar_errores():
     with pytest.raises(ValueError):
         grupo.add_entrada(-9)
 
-    with pytest.raises(TypeError) as excinfo:
+    with pytest.raises(ValueError) as excinfo:
         grupo.add_entrada("hola")
     assert str(excinfo.value) == "La edad debe ser un número entero."
 
@@ -56,7 +56,7 @@ def test_provocar_errores():
         Entrada(-2)
     assert str(excinfo.value) == "Solo edades mayores o iguales a 0."
 
-    with pytest.raises(TypeError):
+    with pytest.raises(ValueError):
         Entrada("hola")
 
 def test_cantidad_entradas_por_tipo():
