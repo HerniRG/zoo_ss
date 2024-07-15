@@ -51,8 +51,8 @@ class VistaGrupo():
         locate(self.x, linea_pintada, f"                      {total_entradas}    {total_precio}")
         
 
-class VistaEntrada():
-    def __init__(self, etiqueta: str, x, y) -> None:
+class VistaInput():
+    def __init__(self, etiqueta: str, x: int, y: int) -> None:
         self.etiqueta = etiqueta
         self.x = x
         self.y = y
@@ -61,3 +61,5 @@ class VistaEntrada():
     def paint(self):
         locate(self.x, self.y, self.etiqueta)
         self.value = Input()
+
+
